@@ -1,68 +1,50 @@
 # cert_chain
 Decentralized Academic Certificate Registry
 
-A Python-based blockchain simulation for securely registering, transferring, and verifying academic certificates. Each certificate is stored as a unique digital asset (similar to NFTs) within a local blockchain ledger.
+A Python-based blockchain-inspired application that securely registers, transfers, and verifies academic certificates. Each transaction (minting or transfer) appends a block to the ledger, ensuring tamper-resistant, transparent history.
 
 Features
 
-Mint/Register new certificates in PDF or image format
+Register (mint) certificates with owner details
 
 Transfer certificate ownership between users
 
-Verify authenticity and transaction history of certificates
+View the complete certificate transaction history
 
-View the complete blockchain ledger
+Enforce data integrity using SHA-256 hashing
 
-Automatic file path handling for Windows and Linux
-
-Prerequisites
+Requirements
 
 Python 3.8 or higher
 
-Standard Python libraries: hashlib, json, datetime
+No external dependencies; uses only standard Python libraries (hashlib, json, dataclasses)
 
-Usage Overview
+How It Works
 
-Register a certificate by providing its file path and owner details
+Mint/Register a Certificate – Upload or reference a certificate file (PDF/image) along with student/course/year metadata. A unique fingerprint (cert_hash) is created and stored in the blockchain.
 
-Transfer ownership securely using the blockchain ledger
+Transfer Ownership – Append a transfer event to the ledger, updating who currently holds the certificate.
 
-Verify certificates and view their transaction history
+Verify History – Retrieve full mint and transfer history for any given certificate.
 
-Ledger is stored locally in ledger.json
+View Ledger – Inspect the entire blockchain-style record of all certificate events.
 
-Certificate File Path
+Example Use Case
 
-Ensure correct file name and extension (.jpg, .png, .pdf)
+Mint – Register John Doe’s course completion certificate → generates a unique cert_hash.
 
-Use forward slashes (/) in paths
+Transfer – Transfer certificate verification control from John Doe to University Admin.
 
-Optionally, place the certificate in the same folder as the script
+Verify – Check the history and current owner using the cert_hash.
 
-Data Storage
+Purpose
 
-Each transaction is recorded as a block in ledger.json
-
-Blockchain structure includes:
-
-Certificate ID
-
-Owner information
-
-Timestamp
-
-Previous hash for integrity
-
-Troubleshooting
-
-Verify correct file path and extension if "File not found" occurs
-
-Ensure terminal has permission to access directories
+This tool serves as an educational demonstration of how blockchain concepts—like hashing, immutability, and append-only ledgers—can be applied beyond cryptocurrency. It’s ideal for learning, prototyping, and internal submissions.
 
 Future Enhancements
 
-Graphical interface for easier certificate selection
+Enhanced file-handling logic (auto-quote stripping, path normalization)
 
-Integration with IPFS or an actual blockchain network
+GUI with file picker (Tkinter or web interface)
 
-QR-code verification for on-chain certificates
+Transition to real blockchain (Ethereum, IPFS, NFTs, QR-code validation)
